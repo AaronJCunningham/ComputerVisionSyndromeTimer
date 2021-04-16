@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import { Howl } from "howler";
 
 import Timer from "./Timer";
-
-import beep from "./beep.mp3";
+import Alarm from "./Alarm";
 
 var myVar;
 
@@ -23,15 +21,9 @@ const App = () => {
     setTimer(0);
   };
 
-  const handleBeep = () => {
-    var sound = new Howl({
-      src: beep,
-    });
-    sound.play();
-  };
-
   return (
     <div>
+      {timer === 0 ? <h1>Press Start</h1> : <Alarm timer={timer} />}
       <Timer timer={timer} />
       <div className="buttons">
         <button className="button" onClick={myTimer}>
