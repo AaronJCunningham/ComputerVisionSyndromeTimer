@@ -1,11 +1,8 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClock } from "@fortawesome/free-regular-svg-icons";
 
 import useTimer from "../components/hooks/useTimer";
 import { formatTime } from "../components/utils/formatTime";
-
-const element = <FontAwesomeIcon icon={faClock} />;
+import { handleBeep } from "./utils/handleBeep";
 
 const Timer = () => {
   const {
@@ -18,20 +15,39 @@ const Timer = () => {
     handleReset,
   } = useTimer(0);
 
+  console.log(timer);
+
   return (
     <div className="app">
-      <h3>React Stopwatch {element}</h3>
-      <div className="stopwatch-card">
+      <div className="timer">
+        <p>
+          {timer >= 1200 ? (
+            timer >= 1500 ? (
+              <h1>Break</h1>
+            ) : (
+              <h1>Alarm</h1>
+            )
+          ) : (
+            <h1>Working</h1>
+          )}
+        </p>
         <p>{formatTime(timer)}</p>
+        {handleBeep(timer)}
         <div className="buttons">
           {!isActive && !isPaused ? (
-            <button onClick={handleStart}>Start</button>
+            <button className="button" onClick={handleStart}>
+              Start
+            </button>
           ) : isPaused ? (
-            <button onClick={handlePause}>Pause</button>
+            <button className="button" onClick={handlePause}>
+              Pause
+            </button>
           ) : (
-            <button onClick={handleResume}>Resume</button>
+            <button className="button" onClick={handleResume}>
+              Resume
+            </button>
           )}
-          <button onClick={handleReset} disabled={!isActive}>
+          <button className="button" onClick={handleReset} disabled={!isActive}>
             Reset
           </button>
         </div>
