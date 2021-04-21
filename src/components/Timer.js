@@ -2,6 +2,7 @@ import React from "react";
 
 import useTimer from "../components/hooks/useTimer";
 import { formatTime } from "../components/utils/formatTime";
+import { formatAlarmMessage } from "./utils/formatAlarmMessage";
 import { handleBeep } from "./utils/handleBeep";
 
 const Timer = () => {
@@ -15,22 +16,10 @@ const Timer = () => {
     handleReset,
   } = useTimer(0);
 
-  console.log(timer);
-
   return (
     <div className="app">
       <div className="timer">
-        <p>
-          {timer >= 1200 ? (
-            timer >= 1500 ? (
-              <h1>Break</h1>
-            ) : (
-              <h1>Alarm</h1>
-            )
-          ) : (
-            <h1>Working</h1>
-          )}
-        </p>
+        <p>{formatAlarmMessage(timer)}</p>
         <p>{formatTime(timer)}</p>
         {handleBeep(timer)}
         <div className="buttons">
