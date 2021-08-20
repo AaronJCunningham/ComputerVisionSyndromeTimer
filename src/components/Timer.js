@@ -32,13 +32,19 @@ const Timer = () => {
               Pause
             </button>
           ) : (
-            <button className="button" onClick={handleResume}>
-              Resume
-            </button>
+            <>
+              <button className="button" onClick={handleResume}>
+                Resume
+              </button>
+              <button
+                className="button"
+                onClick={handleReset}
+                disabled={!isActive}
+              >
+                Reset
+              </button>
+            </>
           )}
-          <button className="button" onClick={handleReset} disabled={!isActive}>
-            Reset
-          </button>
         </div>
       </div>
     </div>

@@ -33,7 +33,7 @@ const useTimer = (initialState = 0) => {
     setTimer(0);
   };
 
-  if (timer > 1500) {
+  if (timer > 15) {
     setTimer(0);
   }
 

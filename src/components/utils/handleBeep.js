@@ -1,5 +1,5 @@
 import { Howl } from "howler";
-import beep from "./beep.mp3";
+import beep from "./Chime.mp3";
 
 export const handleBeep = (timer) => {
   var sound = new Howl({
